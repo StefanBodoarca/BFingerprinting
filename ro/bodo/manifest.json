@@ -1,0 +1,57 @@
+{
+  "name": "BFingerprinting Extension",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/fingerprint.png"
+  },
+
+  "background": {
+    "scripts": [
+      "modules/background.js",
+      "modules/spoofer_bs.js"
+    ]
+  },
+
+  "icons": {
+    "16": "icons/fingerprint-16.png",
+    "32": "icons/fingerprint-32.png",
+    "48": "icons/fingerprint-48.png",
+    "128": "icons/fingerprint-128.png"
+  },
+
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "tabs",
+    "browsingData",
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "cookies",
+    "proxy",
+    "privacy",
+    "contentSettings",
+    "management",
+    "<all_urls>"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": ["modules/spoofer_cs.js"],
+      "run_at": "document_start",
+      "match_about_blank": true,
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    "libs/jquery-3.3.1.min.js",
+    "modules/spoofer_cs.js"
+  ]
+}

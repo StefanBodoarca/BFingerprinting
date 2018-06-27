@@ -1,0 +1,154 @@
+{
+  "domain" : {
+    "value" : "",
+    "action" : "no"
+  },
+  "description" : {
+    "value" : "",
+    "action" : "no"
+  },
+  "profile_id" : {
+    "value" : "",
+    "action" : "no"
+  },
+  "user_agent" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "accept_default" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "accept_encoding" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "accept_language" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "platform" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "screen_resolution" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "app_version" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "app_name" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "pixel_depth" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "color_depth" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "vendor_spoof" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "vendorSub_spoof" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "mimeTypes" : {
+    "value" : "\"\"",
+    "action" : "spoof"
+  },
+  "navigator_plugins" : {
+    "value" : "\"\"",
+    "action" : "spoof"
+  },
+  "timezoneOffset" : {
+    "value" : "",
+    "action" : "spoof"
+  },
+  "navigator_battery" : {
+    "value" : "undefined",
+    "action" : "spoof-blocked"
+  },
+  "navigator_getBattery" : {
+    "value" : "undefined",
+    "action" : "spoof-blocked"
+  },
+  "window_AudioContext" : {
+    "value" : "no",
+    "action" : "blocked"
+  },
+  "window_webkitAudioContext" : {
+    "value" : "no",
+    "action" : "blocked"
+  },
+  "webgl_api" : {
+    "webgl" : {
+      "value" : "no",
+      "action" : "blocked"
+    },
+    "experimentalWebgl" : {
+      "value" : "no",
+      "action" : "blocked"
+    },
+    "webgl2" : {
+      "value" : "no",
+      "action" : "blocked"
+    },
+    "experimentalWebgl2" : {
+      "value" : "no",
+      "action" : "blocked"
+    }
+  },
+  "canvas2D" : {
+    "value" : "no",
+    "action" : ""
+  },
+  "protocol" : {
+    "value" : "",
+    "action" : "no"
+  },
+  "JS" : {
+    "value" : "no",
+    "action" : ""
+  },
+  "Requests" : {
+      "value" : "",
+      "action" : "no"
+  },
+  "content_settings" : {
+    "flash" : {
+      "value" : "no",
+      "action" : "blocked"
+    },
+    "location" : {
+      "value" : "no",
+      "action" : "blocked"
+    },
+    "popups" : {
+      "value" : "no",
+      "action" : "blocked"
+    },
+    "plugins" : {
+      "value" : "no",
+      "action" : "blocked"
+    },
+    "notifications" : {
+      "value" : "no",
+      "action" : "blocked"
+    },
+    "camera" : {
+      "value" : "no",
+      "action" : "blocked"
+    },
+    "microphone" : {
+      "value" : "no",
+      "action" : "blocked"
+    }
+  }
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Popup</title>
+    <link rel="stylesheet" href="libs/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/fontawesome/webfonts/fontawesome-all.css">
+    <!-- jQuery library -->
+    <script src="libs/jquery.min.js"></script>
+
+    <!--Popper JS-->
+    <!-- Latest compiled JavaScript -->
+    <script src="libs/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="libs/bootstrap.min.js"></script>
+    <script src="modules/cookies.js"></script>
+    <script src="modules/identities.js"></script>
+    <script src="libs/CryptoJS_v3.1.2/sha256.js"></script>
+    <script src="popup.js"></script>
+    <link rel="stylesheet" href="popup.css">
+
+</head>
+<body>
+<div class="tabbable full-width-tabs">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item take-all-space-you-can">
+            <a class="nav-link active" data-toggle="tab" href="#cookies">Cookies</a>
+        </li>
+        <li class="nav-item take-all-space-you-can">
+            <a class="nav-link" data-toggle="tab" href="#webIdentity">Web Identities</a>
+        </li>
+        <li class="nav-item take-all-space-you-can">
+            <a class="nav-link" data-toggle="tab" href="#torProxy">Tor Proxy</a>
+        </li>
+        <li class="nav-item take-all-space-you-can">
+            <a class="nav-link" data-toggle="tab" href="#amiunique">Am I Unique</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div id="cookies" class="tab-pane active">
+            <div class="search-del">
+                <div>
+                    <i class="fas fa-sync topicon" id="sync-cookies" data-toggle="tooltip" title="Refresh Cookies"></i>
+                </div>
+                <div style="margin-left: 20px;">
+                    <input type="text" class="form-control" id="search-cookies" placeholder="Search for domain...">
+                </div>
+                <div>
+                    <label class="label" id="toggle-3rd-wrapper" style="margin-top: 6px;">
+                        <div class="toggle">
+                            <input id="toggle-3rd" class="toggle-state" type="checkbox" name="check" value="check"/>
+                            <div class="toggle-inner">
+                                <div class="indicator"></div>
+                            </div>
+                            <div class="active-bg"></div>
+                        </div>
+                        <div class="label-text">3rd</div>
+                    </label>
+                </div>
+                <div>
+                    <label class="label" id="toggle-cookie-wrapper" style="margin-top: 6px;">
+                        <div class="toggle">
+                            <input id="toggle-cookie" class="toggle-state" type="checkbox" name="check" value="check"/>
+                            <div class="toggle-inner">
+                                <div class="indicator"></div>
+                            </div>
+                            <div class="active-bg"></div>
+                        </div>
+                        <div class="label-text">Block</div>
+                    </label>
+                </div>
+                <div>
+                    <i class="fas fa-trash cookie-area topicon" data-toggle="tooltip" id="deleteAll" title="Delete ALL Cookies"></i>
+                </div>
+            </div>
+            <div id="accordion" class="third-container">
+            </div>
+        </div>
+        <div id="webIdentity" class="tab-pane fade">
+            <div class="search-del">
+                <div>
+                    <i class="fas fa-sync topicon" id="sync-identities" data-toggle="tooltip" title="Refresh Identities"></i>
+                </div>
+                <div class="equal-align-inside" style="width: 85%">
+                    <div class="equal-align-inside" style="width: 80%">
+                        <div style="margin-left: 48px;">
+                            <input type="text" class="form-control" id="search-identities" placeholder="Search for domain...">
+                        </div>
+                        <div style="margin-right: 16px;">
+                            <label class="label" style="margin-top: 6px;">
+                                <div class="toggle">
+                                    <input id="toggle-js" class="toggle-state" type="checkbox" name="check" value="check"/>
+                                    <div class="toggle-inner">
+                                        <div class="indicator"></div>
+                                    </div>
+                                    <div class="active-bg"></div>
+                                </div>
+                                <div class="label-text">JS</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div style="margin-right: 30px;">
+                        <label class="label" id="toggle-canvas-wrapper" style="margin-top: 6px;">
+                            <div class="toggle">
+                                <input id="toggle-canvas" class="toggle-state" type="checkbox" name="check" value="check"/>
+                                <div class="toggle-inner">
+                                    <div class="indicator"></div>
+                                </div>
+                                <div class="active-bg"></div>
+                            </div>
+                            <div class="label-text">Canvas</div>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <i class="fas fa-trash identity-area topicon" data-toggle="tooltip" id="deleteIdentities" title="Delete ALL Identities"></i>
+                </div>
+            </div>
+            <div id="accordion-identity" class="third-container">
+            </div>
+        </div>
+        <div id="torProxy" class="tab-pane fade">
+            <div id="torButton" style="margin-left: 15px;">
+                <label class="label" style="margin-top: 6px;">
+                    <div class="toggle">
+                        <input id="torButtonCheck" class="toggle-state" type="checkbox" name="check" value="check"/>
+                        <div class="toggle-inner">
+                            <div class="indicator"></div>
+                        </div>
+                        <div class="active-bg"></div>
+                    </div>
+                    <div class="label-text" id="proxyLabel">Turn on Tor Proxy</div>
+                </label>
+            </div>
+            <hr> <!-- empty line between divs -->
+            <div>
+                <h3 style="margin-left: 15px;">
+                    Browsing Data
+                </h3>
+                <div class="form-group search-del">
+                    <div class="search-del" style="margin-left: 15px;">
+                        <div>
+                            <button type="button" class="btn" id="checkALL">Check ALL</button>
+                        </div>
+                        <div style="margin-left: 35px;">
+                            <button type="button" class="btn" id="uncheckALL">Uncheck ALL</button>
+                        </div>
+                    </div>
+                    <div style="margin-right: 90px;">
+                        <i class="fas fa-trash topicon" data-toggle="tooltip" id="deleteBrowsingData" title="Clear browsing data"></i>
+                    </div>
+                </div>
+                <div class="form-group search-del browsing-wrapper">
+                    <div class="buttons-wrapper">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customAppCache">
+                            <label class="custom-control-label my-hover" for="customAppCache" data-toggle="tooltip" title="Websites' appcaches">App Cache</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customCache">
+                            <label class="custom-control-label my-hover" for="customCache" data-toggle="tooltip" title="The entire browser's cache">Cache</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customCookies">
+                            <label class="custom-control-label my-hover" for="customCookies" data-toggle="tooltip" title="The browser's cookies">Cookies</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customWebSql">
+                            <label class="custom-control-label my-hover" for="customWebSql" data-toggle="tooltip" title="Websites' WebSQL data">WebSql</label>
+                        </div>
+                    </div>
+                    <div class="buttons-wrapper">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customDownloads">
+                            <label class="custom-control-label my-hover" for="customDownloads" data-toggle="tooltip" title="The browser's download list">Downloads</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customFileSystem">
+                            <label class="custom-control-label my-hover" for="customFileSystem" data-toggle="tooltip" title="Websites' file systems">FileSystems</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customFormData">
+                            <label class="custom-control-label my-hover" for="customFormData" data-toggle="tooltip" title="The browser's stored form data">FormData</label>
+                        </div>
+                    </div>
+                    <div class="buttons-wrapper">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customHistory">
+                            <label class="custom-control-label my-hover" for="customHistory" data-toggle="tooltip" title="The browser's history">History</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customIndexedDB">
+                            <label class="custom-control-label my-hover" for="customIndexedDB" data-toggle="tooltip" title="Websites' IndexedDB data">IndexedDB</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customLocalStorage">
+                            <label class="custom-control-label my-hover" for="customLocalStorage" data-toggle="tooltip" title="Websites' local storage data">LocalStorage</label>
+                        </div>
+                    </div>
+                    <div class="buttons-wrapper">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customStoredPasswords">
+                            <label class="custom-control-label my-hover" for="customStoredPasswords" data-toggle="tooltip" title="Stored passwords">Passwords</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customPluginData">
+                            <label class="custom-control-label my-hover" for="customPluginData" data-toggle="tooltip" title="Plugins' data">Plugin Data</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input my-hover browsing-checkbox" id="customServiceWorkers">
+                            <label class="custom-control-label my-hover" for="customServiceWorkers" data-toggle="tooltip" title="Service workers">Service Workers</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr> <!-- empty line between divs -->
+            <div>
+                <div class="alert alert-danger" style="height: 150px;">
+                    <strong>We strongly recommend to follow the instructions bellow!</strong>
+                    <div class="my-list">
+                        <ol>
+                            <li>Turn off JS and use it only when it's a must!</li>
+                            <li>Use <a href="https://chrome.google.com/webstore/detail/webrtc-leak-prevent/eiadekoaikejlgdbkbdfeijglgfdalml" class="my-href"> WebRTC Leak Prevent </a>
+                                and 'Disable non-proxied UDP (force proxy)' !
+                            </li>
+                            <li>Use <a href="https://chrome.google.com/webstore/detail/https-everywhere/gcbommkclmclpchllfjekcdonpmejbdp" class="my-href">HTTPS Everywhere</a>!</li>
+                            <li>Make <a href="https://duckduckgo.com/" class="my-href">DuckDuckGo</a> your default search engine!</li>
+                            <li>Clear Browsing Data!</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="amiunique" class="tab-pane fade">
+            <iframe src="https://amiunique.org/" style="height:485px;width:100%;"></iframe>
+        </div>
+    </div>
+</div>
+</div> <!-- /tabbable -->
+</body>
+</html>
