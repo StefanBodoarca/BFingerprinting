@@ -368,12 +368,11 @@ chrome.runtime.sendMessage({
                 la.indexOf("experimental-webgl2") >= 0) {
                 return null;
             }
-            /*
             if (webIdentity.canvasVar === "blocked") {
                 if (la.indexOf("2d") >= 0) {
                     return null;
                 }
-            }*/
+            }
             if (b) {
                 return window.disableGetContextFeatures.call(this, a, b);
             } else {
